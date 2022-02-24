@@ -36,6 +36,22 @@ const ChildrenOK = (props) => {
         </WrapperWhereMagicHappens>
     ))
 };
+
+const ChildrenButNotInAnArray = (props) => {
+    return (
+        <>
+            <WrapperWhereMagicHappens
+                {...props}
+                key="foo"
+            >
+                <h2>Foo</h2>
+                <div>
+                    {console.log('no array', props.children) || props.children}
+                </div>
+            </WrapperWhereMagicHappens>
+        </>
+    )
+};
 const App = () => {
     return (
         <>
@@ -45,6 +61,9 @@ const App = () => {
             <ChildrenOK foo={1} bar={2}>
                 <p>I'm a child</p>
             </ChildrenOK>
+            <ChildrenButNotInAnArray foo={1} bar={2}>
+                <p>I'm a child</p>
+            </ChildrenButNotInAnArray>
         </>
 
     )
